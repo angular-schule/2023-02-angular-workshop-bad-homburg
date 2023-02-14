@@ -10,7 +10,5 @@ export class BookComponent {
 
   @Input() book?: Book;
 
-  get istSuperBuch() {
-    return this.book?.title === 'Angular';
-  }
+  @Input() istSuperBuch = false;
 }
