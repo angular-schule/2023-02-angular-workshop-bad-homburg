@@ -10,17 +10,12 @@
     </div>
     <p>{{ book.description }}</p>
 
-    <!--
-      1. Logik im Template
-      2. single-responsibility principle (SRP)
-      3. Objekt mutiert!
-    -->
     <button
-      (click)="book.rating = book.rating - 1"
+      (click)="doRateDown()"
       class="btn btn-secondary me-2">-</button>
 
     <button
-      (click)="book.rating = book.rating + 1"
+      (click)="doRateUp()"
       class="btn btn-primary">+</button>
 
   </div>
