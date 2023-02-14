@@ -8,13 +8,9 @@ import { Book } from '../shared/book';
 })
 export class BookComponent {
 
-  istSuperBuch = false;
+  @Input() book?: Book;
 
-  _book?: Book | undefined;
-
-  @Input()
-  public set book(value: Book | undefined) {
-    this._book = value;
-    this.istSuperBuch = value?.title === 'Angular';
+  get istSuperBuch() {
+    return this.book?.title === 'Angular';
   }
 }
