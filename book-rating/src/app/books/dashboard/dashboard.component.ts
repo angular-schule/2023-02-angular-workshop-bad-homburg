@@ -30,6 +30,10 @@ export class DashboardComponent {
 
   doRateUp(book: Book): void {
     const ratedBook = this.br.rateUp(book);
+    // const ratedBook = {
+    //   ...book,
+    //   rating: book.rating < 5 ? book.rating + 1 : 5
+    // };
     this.updateAndSort(ratedBook);
   }
 
@@ -41,6 +45,6 @@ export class DashboardComponent {
   updateAndSort(ratedBook: Book) {
     this.books = this.books
       .map(b => b.isbn === ratedBook.isbn ? ratedBook : b)
-      .sort((a, b) => b.rating - a.rating)
+      .sort((a, b) => b.rating - a.rating);
   }
 }
