@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BookComponent } from '../book/book.component';
+import { Book } from '../shared/book';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -21,7 +22,11 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should work as expected', () => {
     expect(component).toBeTruthy();
+
+    // assumes no error
+    // component.doRateDown({} as Book);
+    // component.doRateUp({} as Book);
   });
 });
