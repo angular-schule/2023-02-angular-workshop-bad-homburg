@@ -1,5 +1,5 @@
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Book } from '../shared/book';
 
@@ -14,6 +14,8 @@ import { Book } from '../shared/book';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookCreateComponent {
+
+  @Output() create = new EventEmitter<Book>();
 
   bookForm = new FormGroup({
     isbn: new FormControl('', {
@@ -44,10 +46,7 @@ export class BookCreateComponent {
       rating: 1
     }
 
-    // 1. Erzeuge ein Event mit dem Namen 'create'
-    // 2. Emitte das Event
-    // 3. Subscribe dich auf das Event im Dashboard
-    // 4. Füge das neue Buch dem Buch-Array hinzu
+    this.create.emit(newBook);
 
     this.bookForm.reset();
   }
