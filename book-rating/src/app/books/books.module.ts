@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { BooksRoutingModule } from './books-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BookComponent } from './book/book.component';
+import { BookCreateComponent } from './book-create/book-create.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { BookComponent } from './book/book.component';
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule
+    BooksRoutingModule,
+    BookCreateComponent
   ],
   exports: [
     DashboardComponent
