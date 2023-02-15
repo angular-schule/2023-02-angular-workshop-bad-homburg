@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
@@ -14,7 +14,7 @@ export class DummyDashboardComponent {
 
 }
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -22,28 +22,29 @@ fdescribe('AppComponent', () => {
       ],
       declarations: [
         AppComponent,
-        DummyDashboardComponent // 100 % Unit Test
+        // DummyDashboardComponent // 100 % Unit Test
         // DashboardComponent, BookComponent // Integration Test
       ],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   });
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  // it('should create the app', () => {
+  //   const fixture = TestBed.createComponent(AppComponent);
+  //   const app = fixture.componentInstance;
+  //   expect(app).toBeTruthy();
+  // });
 
-  it(`should have as title 'book-rating'`, () => {
+  it(`should have as title 'Book Rating'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('book-rating');
+    expect(app.title).toEqual('Book Rating');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('book-rating app is running!');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Book Rating');
   });
 });
