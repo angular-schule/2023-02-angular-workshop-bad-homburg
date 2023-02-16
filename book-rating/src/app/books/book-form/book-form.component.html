@@ -20,6 +20,8 @@
 
   <button
     [disabled]="bookForm.invalid"
-    type="submit" class="btn btn-primary mb-4">Erstellen</button>
+    type="submit" class="btn btn-primary mb-4">
+      {{ selectedBook ? 'Editieren' : 'Erstellen' }}
+    </button>
 
 </form>

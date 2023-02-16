@@ -5,7 +5,7 @@ import { Book } from '../shared/book';
   selector: 'br-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BookComponent {
 
@@ -13,6 +13,7 @@ export class BookComponent {
 
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
+  @Output() edit = new EventEmitter<Book>();
 
   doRateUp() {
     this.rateUp.emit(this.book);
@@ -24,5 +25,9 @@ export class BookComponent {
 
   log() {
     console.log(+new Date());
+  }
+
+  doEdit() {
+    this.edit.emit(this.book);
   }
 }

@@ -15,6 +15,8 @@ export class DashboardComponent {
     // setTimeout(() => this.books = [], 3000)
   }
 
+  selectedBook?: Book;
+
   books: Book[] = [{
     isbn: '000',
     title: 'Angular',
@@ -54,5 +56,14 @@ export class DashboardComponent {
 
   addBook(newBook: Book) {
     this.books = [...this.books, newBook];
+  }
+
+  changeToEditMode(book: Book) {
+    this.selectedBook = book;
+  }
+
+  changeBook(changedBook: Book) {
+    this.updateAndSort(changedBook);
+    this.selectedBook = undefined;
   }
 }
