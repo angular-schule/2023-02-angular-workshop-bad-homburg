@@ -24,6 +24,10 @@
       (click)="doEdit()"
       class="btn btn-primary ms-2">Editieren</button>
 
+    <a
+      [routerLink]="['/books/', book.isbn]"
+      class="btn btn-primary ms-2">Details</a>
+
   </div>
 </div>
 
