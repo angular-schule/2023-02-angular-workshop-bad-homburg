@@ -32,7 +32,7 @@ export class BookDetailsComponent {
         rating: 1
       })))
     ),
-    tap(() => this.loading = false),
+    tap(() => this.loading = true),
   )
 
 }
