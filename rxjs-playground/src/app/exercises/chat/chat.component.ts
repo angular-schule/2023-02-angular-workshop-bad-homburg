@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subject, ReplaySubject, merge, concat, race, forkJoin, EMPTY, map } from 'rxjs';
+import { Subject, ReplaySubject, merge, concat, race, forkJoin, EMPTY, map, zip } from 'rxjs';
 
 @Component({
   selector: 'rxw-chat',
@@ -35,7 +35,7 @@ export class ChatComponent {
 
     /**************!!**************/
 
-    forkJoin([
+    zip([
       this.msg.julia$,
       this.msg.georg$,
       this.msg.john$
