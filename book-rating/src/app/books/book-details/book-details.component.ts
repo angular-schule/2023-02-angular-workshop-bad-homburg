@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { map, share, switchMap } from 'rxjs';
 import { BooksService } from '../shared/http';
 
 @Component({
@@ -14,7 +14,8 @@ export class BookDetailsComponent {
 
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(paramMap => paramMap.get('isbn') ?? ''),
-    map(isbn => this.bs.booksIsbnGet(isbn))
+    switchMap(isbn => this.bs.booksIsbnGet(isbn)),
+    share()
   )
 
 }
