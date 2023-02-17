@@ -1,11 +1,13 @@
-<h2>{{ (book$ | async)?.title }} –
-    {{ (book$ | async)?.rating }}
-</h2>
+<ng-container *ngIf="book$ | async as book">
+  <h2>{{ book.title }} –
+      {{ book.rating }}
+  </h2>
 
-<p *ngIf="showDetails">
-  Details:
-  {{ (book$ | async)?.description }}
-</p>
+  <p *ngIf="showDetails">
+    Details:
+    {{ book.description }}
+  </p>
+</ng-container>
 
 <button
   (click)="showDetails = !showDetails"
