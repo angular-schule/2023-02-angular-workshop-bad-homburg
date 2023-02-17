@@ -4,3 +4,15 @@ import * as fromBook from './book.reducer';
 export const selectBookState = createFeatureSelector<fromBook.State>(
   fromBook.bookFeatureKey
 );
+
+export const selectLoading = createSelector(
+  selectBookState,
+  ({ loading }) => loading
+);
+
+export const selectBooks = createSelector(
+  selectBookState,
+  state => state.books
+);
+
+// + computed selector!
