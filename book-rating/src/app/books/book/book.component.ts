@@ -9,7 +9,7 @@ import { Book } from '../shared/book';
 })
 export class BookComponent {
 
-  @Input() book?: Book;
+  @Input() book?: Book | null;
 
   @Output() rateUp = new EventEmitter<Book>();
   @Output() rateDown = new EventEmitter<Book>();
@@ -32,6 +32,8 @@ export class BookComponent {
   }
 
   doEdit() {
-    this.edit.emit(this.book);
+    if (this.book) {
+      this.edit.next(this.book);
+    }
   }
 }
