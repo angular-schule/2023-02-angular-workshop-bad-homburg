@@ -2,7 +2,16 @@
     {{ (book$ | async)?.rating }}
 </h2>
 
-<p>{{ (book$ | async)?.description }}</p>
+<p *ngIf="showDetails">
+  Details:
+  {{ (book$ | async)?.description }}
+</p>
+
+<button
+  (click)="showDetails = !showDetails"
+  class="btn btn-secondary">Toggle Details</button>
+
+<hr>
 
 <a routerLink="/books/9783960091417">Gehe zu GitHub</a><br>
 <a routerLink="/books/9783864909467">Gehe zu Angular</a><br>
