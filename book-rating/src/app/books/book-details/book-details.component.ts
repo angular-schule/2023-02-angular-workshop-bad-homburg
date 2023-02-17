@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, share, shareReplay, switchMap, tap } from 'rxjs';
+import { map, switchMap } from 'rxjs';
+
 import { BooksService } from '../shared/http';
 
 @Component({

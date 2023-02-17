@@ -1,11 +1,11 @@
-<ng-container *ngIf="book$ | async as book">
-  <h2>{{ book.title }} –
-      {{ book.rating }}
+<ng-container *ngIf="{ book: book$ | async } as x">
+  <h2>{{ x.book?.title }} –
+      {{ x.book?.rating }}
   </h2>
 
   <p *ngIf="showDetails">
     Details:
-    {{ book.description }}
+    {{ x.book?.description }}
   </p>
 </ng-container>
 
