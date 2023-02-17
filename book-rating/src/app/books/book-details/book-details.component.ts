@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, of, retry, switchMap } from 'rxjs';
+import { catchError, map, of, retry, switchMap, tap } from 'rxjs';
 
 import { BooksService } from '../shared/http';
 
@@ -12,12 +12,14 @@ import { BooksService } from '../shared/http';
 })
 export class BookDetailsComponent {
 
-  showDetails = false;
+  // showDetails = false;
+  loading = false;
 
   bs = inject(BooksService);
 
   book$ = inject(ActivatedRoute).paramMap.pipe(
     map(paramMap => paramMap.get('isbn') ?? ''),
+    tap(() => this.loading = true),
     switchMap(isbn => this.bs.booksIsbnGet(isbn).pipe(
       retry({
         count: 3,
@@ -28,7 +30,9 @@ export class BookDetailsComponent {
         title: 'FEHLER',
         description: err.message,
         rating: 1
-      }))))
+      })))
+    ),
+    tap(() => this.loading = false),
   )
 
 }

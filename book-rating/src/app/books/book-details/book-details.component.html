@@ -16,6 +16,8 @@
 
 <br-book [book]="book$ | async"></br-book>
 
+<span *ngIf="loading">Lade...</span>
+
 <hr>
 
 <a routerLink="/books/9783960091417">Gehe zu GitHub</a><br>
